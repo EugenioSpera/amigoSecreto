@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amigo Secreto</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="inclusao_area">
+    <div class="name_container">
+      <h1>Digite o nome do amigo</h1>
+      <form action="">
+      <label class="name_area" for="participantes"></label><br>
+      <input type="text" class="participantes">
+      <small class="erro_area"></small>
+    </form>
+      
+      <div class="button_area">
+        
+        <button type="button" id="btn-adicionar">Adicionar</button>        
+        <button type="button" id="btn-sortear">Adicionar</button>        
+        <button type="button" id="btn-reiniciar">Adicionar</button>  
+              
+        
+      </div>
+    </div>
+
+
+
+    <h2>Amigos incluídos para o sorteio</h2>
+    <p class="name_area"></p>
+    <div class="sorteio" ></div>
+  </div>
+
+
+
+    <div class="sorteio-area">
+      <h2>Sorteio</h2>
+      <label class="name_area" for="participantes"></label><br>
+      <textarea id="participantes"></textarea><br>
+    </div>
+  </div>
+
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
