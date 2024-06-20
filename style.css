@@ -50,7 +50,32 @@ button{
 
 }
 
-.name_area{
+.sorteio{
+    border: 1px solid;
     border-radius: 5px;
+    font-size: 2rem;
     
+}
+
+.btn-adicionar{
+    background-color: burlywood;
+}
+
+.btn-sortear{
+    background-color: chocolate;
+}
+
+.btn-reiniciar{
+    background-color: crimson;
+}
+
+:root {
+    font-size: 62.5%;
+}
+
+.erro_area{
+    display: block;
+    color: red;
+    font-style: italic;
+    font-size: 1.4rem;
 }

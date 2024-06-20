@@ -1,31 +1,40 @@
+let amigos = [];
+
+
 //participantes
 
 // quando colocamos um . pegamos uma classe. Quando usamos a # pega ID isso no queryselector
-const txtAmigo = document.querySelector('.participantes');
+const txtAmigo = document.querySelector('.participantes'); //caixa de texto
 const btnAdicionar = document.querySelector('#btn-adicionar');
-const Adicionados = document.querySelector('.sorteio');
+const btnReiniciar = document.querySelector('#btn-reiniciar');
+const btnSortear = document.querySelector('#btn-sortear');
+const adicionados = document.querySelector('.sorteio');
 const erroArea = document.querySelector('.erro_area');
+const listaSorteio = document.querySelector('.lista-sorteio');
 
 
 
-btnAdicionar.addEventListener('click', ()=>{
-  
-  if (txtAmigo.value==''){
-    setErrorFor(txtAmigo,"Insira um nome válido.");
-  }
-  else
-  
+//----------------------------Adicionar--------------------------------------
 
-  if (Adicionados.innerHTML=="") {
-    Adicionados.innerHTML=txtAmigo.value;
+btnAdicionar.addEventListener('click', () => {
+
+  if (txtAmigo.value === '') {
+    setErrorFor(txtAmigo, "Erro!! Insira um nome válido.");
+  } else
+
+
+  if (adicionados.innerHTML == "") {
+    adicionados.innerHTML = txtAmigo.value;
   } else {
-    Adicionados.innerHTML=Adicionados.innerHTML + "," +txtAmigo.value;
-    erroArea.textContent='';
+    adicionados.innerHTML = adicionados.innerHTML + ", " + txtAmigo.value;
+    amigos.push(txtAmigo.value);
+    console.log
+    erroArea.textContent = '';
   }
   //Comando para deletar o input onde foi colocado o nome, apos ele jogar o nome para o sorteio
-  txtAmigo.value='';
-  
-  
+  txtAmigo.value = '';
+
+
 
 })
 
@@ -34,57 +43,78 @@ function setErrorFor(input, message) {
   //retorna a div que é o pai do input
   const participantes = input.parentElement;
   //querySelector = retorna apenas o primeiro elemento especificado dentro do elemento pai
-  const small = participantes.querySelector("small");
+  const span = participantes.querySelector("span");
 
   //Adiciona a mensagem de erro
-  small.innerText = message;
+  span.innerText = message;
 
   //Adiciona a classe de erro
   participantes.className = "participantes error";
+
 }
 
+
+//---------------------Sorteio------------------------------------------------
 //txtAmigo.value;
 
 
+btnSortear.addEventListener('click', () => {
+
+  
+
+function embaralhar(array) {
+  for (let i = array.length; i; i--) {
+           const indiceAleatorio = Math.floor(Math.random() * (i)); 
+           [array[i-1], array[indiceAleatorio]] = [array[indiceAleatorio], array[i-1]];
+  }
+}
+
+function sortear() {
+  if (amigos.length < 4) {
+      mostrarMsgErro('Adicione ao menos 4 amigos!');
+      return;
+  }
+
+  embaralhar(amigos);
+
+  let sorteio = document.querySelector('.sorteio');
+  for (let i = 0; i < amigos.length; i++) {
+      if (i == amigos.length - 1) {
+          sorteio.innerHTML = sorteio.innerHTML + '<li>' + amigos[i] + ' --> ' + amigos[0] + '</li>';
+      } else {
+          sorteio.innerHTML = sorteio.innerHTML + '<li>' + amigos[i] + ' --> ' + amigos[i + 1] + '</li>';
+      }
+  }
+}
+})
+
+
+  const resultDiv = document.getElementById("result");
+  resultDiv.innerHTML = "";
+
+  for (const participante in amigoSecreto) {
+           const amigo = amigoSecreto[participante];
+    const li = document.createElement("li");
+    p.textContent = `${participante} tirou ${amigo} como amigo secreto.`;
+    resultDiv.appendChild(li);
+  }
+
+
+
+//----------------------Reiniciar------------------------------------------
+
+
+btnReiniciar.addEventListener('click', () => {
+
+  txtAmigo.value = '';
+
+  adicionados.textContent = '';
+
+  listaSorteio.innerHTML = '';
+
+  amigos = [];
 
 
 
 
-
-// function shuffleArray(array) {
-//     for (let i = array.length - 1; i > 0; i--) {
-//       const j = Math.floor(Math.random() * (i + 1));
-//       [array[i], array[j]] = [array[j], array[i]];
-//     }
-//   }
-  
-//   function sortearAmigoSecreto() {
-//     const participantesInput = document.getElementById("participants").value;
-//     const participantes = participantesInput.split(",").map(participant => participante.trim());
-  
-//     if (participantes.length < 2) {
-//       alert("Por favor, insira pelo menos dois participantes.");
-//       return;
-//     }
-  
-//     shuffleArray(participantes);
-  
-//     const amigoSecreto = {};
-  
-//     for (let i = 0; i < participantes.length; i++) {
-//       const amigoIndex = (i + 1) % participantes.length;
-//       amigoSecreto[participantes[i]] = participantes[amigoIndex];
-//     }
-  
-//     const resultDiv = document.getElementById("result");
-//     resultDiv.innerHTML = "";
-  
-//     for (const participante in amigoSecreto) {
-//       const amigo = amigoSecreto[participante];
-//       const p = document.createElement("p");
-//       p.textContent = `${participante} tirou ${amigo} como amigo secreto.`;
-//       resultDiv.appendChild(p);
-//     }
-//   }
-
-  
+})

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amigo Secreto</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./style.css"/>
 </head>
 
 <body>
@@ -14,23 +14,21 @@
     <div class="name_container">
       <h1>Digite o nome do amigo</h1>
       <form action="">
-      <label class="name_area" for="participantes"></label><br>
+      <label class="name_area" for="participantes" id="participantes"></label><br>
       <input type="text" class="participantes">
-      <small class="erro_area"></small>
+      <span class="erro_area"></span>
     </form>
       
       <div class="button_area">
         
-        <button type="button" id="btn-adicionar">Adicionar</button>        
-        <button type="button" id="btn-sortear">Adicionar</button>        
-        <button type="button" id="btn-reiniciar">Adicionar</button>  
+        <button class="btn-adicionar" type="button" id="btn-adicionar">Adicionar</button>        
+        <button class="btn-sortear" type="button" id="btn-sortear">Sortear</button>        
+        <button class="btn-reiniciar" type="button" id="btn-reiniciar">Reiniciar</button>  
               
         
       </div>
+
     </div>
-
-
-
     <h2>Amigos incluídos para o sorteio</h2>
     <p class="name_area"></p>
     <div class="sorteio" ></div>
@@ -39,9 +37,11 @@
 
 
     <div class="sorteio-area">
-      <h2>Sorteio</h2>
-      <label class="name_area" for="participantes"></label><br>
-      <textarea id="participantes"></textarea><br>
+      <h2>Sorteio</h2>     
+      <ul class="lista-sorteio">     
+      </ul>
+      
+
     </div>
   </div>
 
